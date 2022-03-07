@@ -1,5 +1,5 @@
 module clibusb [system] {
     header "libusb.h"
-    link "libusb"
+    link "libusb-1.0"
     export *
 }
