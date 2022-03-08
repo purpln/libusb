@@ -1,5 +1,6 @@
 module clibusb [system] {
     header "libusb.h"
-    //link "usb-1.0"
+    link "libusb"
+    link "usb-1.0"
     export *
 }
