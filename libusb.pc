@@ -1,4 +1,4 @@
-prefix=/opt/homebrew/Cellar/libusb/1.0.25
+prefix=/opt/homebrew/Cellar/libusb/1.0.26
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 sharedlibdir=${libdir}
@@ -6,7 +6,7 @@ includedir=${prefix}/include
 
 Name: libusb
 Description: libusb library
-Version: 1.0.25
+Version: 1.0.26
 
 Requires:
 Libs: -L${libdir} -L${sharedlibdir} -lusb-1.0
