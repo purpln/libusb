@@ -5,6 +5,14 @@ public struct Endpoint: Equatable, Hashable, CustomStringConvertible {
     public var address: UInt8
     public var size: UInt16
     
+    public init(type: Transfer, sync: Sync, usage: Usage? = nil, address: UInt8, size: UInt16) {
+        self.type = type
+        self.sync = sync
+        self.usage = usage
+        self.address = address
+        self.size = size
+    }
+    
     public var description: String {
         "Endpoint(type: \(type), sync: \(sync), usage: \(usage?.description ?? "nil"), address: \(address), size: \(size))"
     }
