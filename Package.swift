@@ -1,11 +1,13 @@
 // swift-tools-version:5.3
 
 import PackageDescription
+
 #if os(Linux)
 let library: PackageDescription.Target = .systemLibrary(name: "clibusb")
 #elseif os(macOS)
 let library: PackageDescription.Target = .systemLibrary(name: "clibusb", pkgConfig: "libusb")
 #endif
+
 let package = Package(
     name: "libusb",
     products: [
