@@ -5,7 +5,7 @@ import PackageDescription
 #if os(Linux)
 let library: PackageDescription.Target = .systemLibrary(name: "clibusb")
 #elseif os(macOS)
-let library: PackageDescription.Target = .systemLibrary(name: "clibusb", pkgConfig: "libusb")
+let library: PackageDescription.Target = .systemLibrary(name: "clibusb", pkgConfig: "libusb-1.0")
 #endif
 
 let package = Package(
