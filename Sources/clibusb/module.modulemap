@@ -1,4 +1,4 @@
 module clibusb [system] {
-    header "libusb.h"
+    header "header.h"
     export *
 }
