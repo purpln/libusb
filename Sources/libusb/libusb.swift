@@ -30,8 +30,7 @@ public func close(handle: inout OpaquePointer?) throws {
     handle = nil
 }
 public func reset(handle: OpaquePointer?) throws {
-    guard handle != nil else { throw Error.other }
-    try execute {
+    try wrap(handle: handle) { handle in
         libusb_reset_device(handle)
     }
 }
@@ -103,10 +102,10 @@ public func speed(device: OpaquePointer) -> Speed? {
 }
 */
 
-public func string(device: OpaquePointer, index: UInt8) throws -> [UInt8] {
+public func string(handle: OpaquePointer?, index: UInt8) throws -> [UInt8] {
     var array = [UInt8](repeating: 0, count: 256)
-    try execute {
-        libusb_get_string_descriptor(device, index, 0, &array, 256)
+    try wrap(handle: handle) { handle in
+        libusb_get_string_descriptor(handle, index, 0, &array, 256)
     }
     return array
 }
