@@ -29,6 +29,12 @@ public func close(handle: inout OpaquePointer?) throws {
     libusb_close(handle)
     handle = nil
 }
+public func reset(handle: OpaquePointer?) throws {
+    guard handle != nil else { throw Error.other }
+    try execute {
+        libusb_reset_device(handle)
+    }
+}
 
 public func get(handle: OpaquePointer?, configuration: inout Int32) throws {
     try execute {
@@ -96,12 +102,6 @@ public func speed(device: OpaquePointer) -> Speed? {
     return Speed(rawValue: UInt8(speed))
 }
 */
-
-public func reset(device: OpaquePointer) throws {
-    try execute {
-        libusb_reset_device(device)
-    }
-}
 
 public func string(device: OpaquePointer, index: UInt8) throws -> [UInt8] {
     var array = [UInt8](repeating: 0, count: 256)
