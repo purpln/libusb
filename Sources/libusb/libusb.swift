@@ -90,10 +90,25 @@ public func port(device: OpaquePointer) throws -> [UInt8] {
 public func address(device: OpaquePointer) -> UInt8 {
     libusb_get_device_address(device)
 }
-
+/*
 public func speed(device: OpaquePointer) -> Speed? {
     let speed = libusb_get_device_speed(device)
     return Speed(rawValue: UInt8(speed))
+}
+*/
+
+public func reset(device: OpaquePointer) throws {
+    try execute {
+        libusb_reset_device(device)
+    }
+}
+
+public func string(device: OpaquePointer, index: UInt8) throws -> [UInt8] {
+    var array = [UInt8](repeating: 0, count: 256)
+    try execute {
+        libusb_get_string_descriptor(device, index, 0, &array, 256)
+    }
+    return array
 }
 
 public func maxPacketSize(device: OpaquePointer, endpoint: UInt8) throws -> Int32 {

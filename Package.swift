@@ -15,6 +15,6 @@ let package = Package(
         .library(name: "clibusb", targets: ["clibusb"])
     ],
     targets: [
-        library, .target(name: "libusb", dependencies: ["clibusb"])
+        library, .target(name: "libusb", dependencies: ["clibusb"], cSettings: [.define("LIBUSB_DEBUG")])
     ]
 )
